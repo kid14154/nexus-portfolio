@@ -1,0 +1,539 @@
+/* ============================================================
+   NEXUS - Effects Stylesheet
+   Standalone visual effect classes
+   ============================================================ */
+
+/* ============================================================
+   1. GLOW TEXT - Multi-layered text-shadow glow
+   ============================================================ */
+
+.glow-text {
+  text-shadow:
+    0 0 7px rgba(0, 240, 255, 0.6),
+    0 0 15px rgba(0, 240, 255, 0.3),
+    0 0 30px rgba(0, 240, 255, 0.15),
+    0 0 60px rgba(0, 240, 255, 0.07);
+}
+
+.glow-text--cyan {
+  text-shadow:
+    0 0 7px rgba(0, 240, 255, 0.6),
+    0 0 15px rgba(0, 240, 255, 0.3),
+    0 0 30px rgba(0, 240, 255, 0.15),
+    0 0 60px rgba(0, 240, 255, 0.07);
+}
+
+.glow-text--purple {
+  text-shadow:
+    0 0 7px rgba(184, 41, 221, 0.6),
+    0 0 15px rgba(184, 41, 221, 0.3),
+    0 0 30px rgba(184, 41, 221, 0.15),
+    0 0 60px rgba(184, 41, 221, 0.07);
+}
+
+.glow-text--gold {
+  text-shadow:
+    0 0 7px rgba(201, 162, 39, 0.6),
+    0 0 15px rgba(201, 162, 39, 0.3),
+    0 0 30px rgba(201, 162, 39, 0.15),
+    0 0 60px rgba(201, 162, 39, 0.07);
+}
+
+.glow-text--white {
+  text-shadow:
+    0 0 7px rgba(255, 255, 255, 0.4),
+    0 0 15px rgba(255, 255, 255, 0.2),
+    0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   2. GLASS CARD - Frosted glass effect
+   ============================================================ */
+
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.glass-card--strong {
+  background: var(--bg-glass-strong);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+.glass-card--borderless {
+  border: none;
+}
+
+/* ============================================================
+   3. GLOW BORDER - Animated glowing border on hover
+   ============================================================ */
+
+.glow-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: var(--space-xs, 0);
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    transparent,
+    transparent,
+    transparent
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity 0.6s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--accent-cyan),
+    var(--accent-purple),
+    var(--accent-cyan),
+    transparent
+  );
+  animation: glow-border-rotate 3s linear infinite;
+}
+
+.glow-border--cyan::before {
+  background: linear-gradient(135deg, transparent, var(--accent-cyan));
+}
+
+.glow-border--cyan:hover::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--accent-cyan),
+    transparent,
+    var(--accent-cyan),
+    transparent
+  );
+  animation: glow-border-rotate 3s linear infinite;
+}
+
+.glow-border--purple::before {
+  background: linear-gradient(135deg, transparent, var(--accent-purple));
+}
+
+.glow-border--purple:hover::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--accent-purple),
+    transparent,
+    var(--accent-purple),
+    transparent
+  );
+  animation: glow-border-rotate 3s linear infinite;
+}
+
+.glow-border--gold::before {
+  background: linear-gradient(135deg, transparent, var(--accent-gold));
+}
+
+.glow-border--gold:hover::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--accent-gold),
+    transparent,
+    var(--accent-gold),
+    transparent
+  );
+  animation: glow-border-rotate 3s linear infinite;
+}
+
+@keyframes glow-border-rotate {
+  0% {
+    --border-angle: 0deg;
+  }
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ============================================================
+   4. SCANLINE - CRT scanline overlay
+   ============================================================ */
+
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: var(--z-scanline);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+.scanline--active::after {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* Moving scanline beam */
+.scanline-beam {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-beam::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 240, 255, 0.03),
+    transparent
+  );
+  pointer-events: none;
+  z-index: var(--z-scanline);
+  animation: scanline-beam 4s linear infinite;
+}
+
+@keyframes scanline-beam {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(calc(100vh + 100%));
+  }
+}
+
+/* ============================================================
+   5. GRADIENT TEXT - Multicolor gradient text
+   ============================================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text--cyan-purple {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text--cyan-gold {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text--purple-gold {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text--triple {
+  background: linear-gradient(
+    135deg,
+    var(--accent-cyan),
+    var(--accent-purple),
+    var(--accent-gold)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   6. FLOAT ANIMATION - Subtle floating hover
+   ============================================================ */
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.float-animation--slow {
+  animation: float 4s ease-in-out infinite;
+}
+
+.float-animation--fast {
+  animation: float 2s ease-in-out infinite;
+}
+
+.float-animation--delay-1 {
+  animation-delay: 0s;
+}
+
+.float-animation--delay-2 {
+  animation-delay: 0.5s;
+}
+
+.float-animation--delay-3 {
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ============================================================
+   7. PULSE GLOW - Pulsing glow aura
+   ============================================================ */
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.pulse-glow--fast {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+.pulse-glow--slow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 5px rgba(0, 240, 255, 0.3),
+      0 0 10px rgba(0, 240, 255, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 15px rgba(0, 240, 255, 0.5),
+      0 0 30px rgba(0, 240, 255, 0.25),
+      0 0 45px rgba(0, 240, 255, 0.1);
+  }
+}
+
+.pulse-glow--purple {
+  animation: pulse-glow-purple 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-purple {
+  0%, 100% {
+    box-shadow:
+      0 0 5px rgba(184, 41, 221, 0.3),
+      0 0 10px rgba(184, 41, 221, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 15px rgba(184, 41, 221, 0.5),
+      0 0 30px rgba(184, 41, 221, 0.25),
+      0 0 45px rgba(184, 41, 221, 0.1);
+  }
+}
+
+.pulse-glow--gold {
+  animation: pulse-glow-gold 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-gold {
+  0%, 100% {
+    box-shadow:
+      0 0 5px rgba(201, 162, 39, 0.3),
+      0 0 10px rgba(201, 162, 39, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 15px rgba(201, 162, 39, 0.5),
+      0 0 30px rgba(201, 162, 39, 0.25),
+      0 0 45px rgba(201, 162, 39, 0.1);
+  }
+}
+
+/* ============================================================
+   8. ADDITIONAL EFFECTS
+   ============================================================ */
+
+/* Shimmer loading */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-glass) 25%,
+    var(--bg-glass-hover) 50%,
+    var(--bg-glass) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Neon flicker (for special text elements) */
+.neon-flicker {
+  animation: neon-flicker 3s infinite;
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.5;
+  }
+}
+
+/* Hover lift */
+.hover-lift {
+  transition: var(--transition);
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glow-cyan-sm);
+}
+
+/* Hover scale */
+.hover-scale {
+  transition: var(--transition);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Blur reveal */
+.blur-reveal {
+  filter: blur(10px);
+  opacity: 0;
+  transition: filter 0.6s ease, opacity 0.6s ease;
+}
+
+.blur-reveal--visible {
+  filter: blur(0);
+  opacity: 1;
+}
+
+/* Typing underscore */
+.typing-underscore {
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Background grid pattern */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Diagonal stripes pattern */
+.bg-stripes {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.01) 10px,
+    rgba(255, 255, 255, 0.01) 11px
+  );
+}
+
+/* Radial vignette overlay */
+.vignette {
+  position: relative;
+}
+
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+/* Grain overlay */
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
