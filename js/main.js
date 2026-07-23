@@ -68,9 +68,9 @@ const PORTFOLIO_DATA = [
     id: 3,
     title: '德城街道公益暑托班 AI 课程',
     description: '街道团委牵头的零门槛公益暑托班项目（AI+公益），面向 6-21 岁青少年，覆盖 50+ 名学生，解决"课程多元、师资不足、安全可控"三大痛点。作为返乡大学生志愿者，我担任<strong>青少年 AIGC 课程主讲老师 & AI 启蒙模块负责人</strong>。用即梦+Kimi 3 天生成 10 套 AIGC 互动课件，现场授课 5 场，确保每个学生都能听懂、学会。项目成果：AI 课件复用率 80%，课堂满意度 50%+，街道公众号单篇阅读破 5000。这个项目让我坚信：<strong>好的 AIGC 传播者，必须先是一个好的跨界故事讲述者</strong>。',
-    tags: ['AI 教育', '公益', '课件', '志愿'],
+    tags: ['AI 教育培训', '公益', '课件', '志愿'],
     icon: '🎓',
-    category: '教育公益',
+    category: '教育培训公益',
     image: 'assets/images/portfolio-3.jpg',
     url: '#',
     github: '#',
@@ -96,12 +96,12 @@ const EXPERIENCE_DATA = [
     title: 'AIGC 课程负责人',
     company: '深圳市游志文娱科技有限公司',
     period: '2026.01 - 2026.05',
-    description: '执掌 AIGC 课程体系之牛耳，以复合型人才的体系化思维编织从科普到提效的完整课程梯度。我既是课程架构的<strong>设计师</strong>，也是多场景授课的<strong>交付者</strong>——为青少年点燃 AIGC 启蒙之火（AI+教育），为银发族架设跨越数字鸿沟的桥梁（AI+普惠），为企业团队锻造效率跃迁的利刃（AI+提效）。这不是一份工作，而是一场让 AIGC 能力向万业流淌的跨界实验。',
+    description: '执掌 AIGC 课程体系之牛耳，以复合型人才的体系化思维编织从科普到提效的完整课程梯度。我既是课程架构的<strong>设计师</strong>，也是多场景授课的<strong>交付者</strong>——为青少年点燃 AIGC 启蒙之火（AI+教育培训），为银发族架设跨越数字鸿沟的桥梁（AI+普惠），为企业团队锻造效率跃迁的利刃（AI+提效）。这不是一份工作，而是一场让 AIGC 能力向万业流淌的跨界实验。',
     highlights: [
       '主导 AIGC 课程框架搭建，梳理课程梯度、内容模块与教学标准，为 C 端青少年/老年科普课、B 端企业 AI 提效课落地提供体系化支撑',
       '针对青少年、老年群体认知差异定制授课方案，降低 AI 工具使用门槛，累计覆盖学员超 50 人次',
       '为企业定制办公提效类 AI 培训方案，助力客户团队人均工作效率提升 20%',
-      '负责 AIGC 课程体系搭建与多场景授课交付，覆盖 To C 普惠教育、To B 企业培训两类业务线',
+      '负责 AIGC 课程体系搭建与多场景授课交付，覆盖 To C 普惠教育培训、To B 企业培训两类业务线',
     ],
   },
   {
@@ -110,7 +110,7 @@ const EXPERIENCE_DATA = [
     title: '教学事务助理',
     company: '深圳市那位科技有限公司',
     period: '2025.02 - 2025.12',
-    description: '深度参与 AIGC 大模型工具的课程化落地，横跨教学、技术、运营三大领域——这正是复合型人才的典型战场。我不仅是教学助手，更是连接技术团队与学员需求的"翻译官"：将复杂的模型原理降维为学员能听懂的语言（AI+教育），将一线教学反馈精准传递给研发团队（AI+产品）。在支持性角色中发挥工具与方法的实际应用价值，将流程优化思路与业务痛点深度结合。',
+    description: '深度参与 AIGC 大模型工具的课程化落地，横跨教学、技术、运营三大领域——这正是复合型人才的典型战场。我不仅是教学助手，更是连接技术团队与学员需求的"翻译官"：将复杂的模型原理降维为学员能听懂的语言（AI+教育培训），将一线教学反馈精准传递给研发团队（AI+产品）。在支持性角色中发挥工具与方法的实际应用价值，将流程优化思路与业务痛点深度结合。',
     highlights: [
       '协助人工智能大模型工具开发，完成课程调研、会议组织及教学事务统筹',
       '协助教师完成大模型应用课程交付，解决学员技术问题，课程满意度 80%+',
@@ -415,7 +415,7 @@ class SkillsManager {
 
   _renderFilters() {
     const categories = ['all', 'frontend', 'backend', 'design', 'tools'];
-    const labels = { all: '全部', frontend: 'AIGC & 教育', backend: '数据 & 系统', design: '创意 & 跨界', tools: '工具 & 技能' };
+    const labels = { all: '全部', frontend: 'AIGC & 教育培训', backend: '数据 & 系统', design: '创意 & 跨界', tools: '工具 & 技能' };
     const filterContainer = document.querySelector('.skills-filter');
     if (!filterContainer) return;
 
@@ -563,7 +563,7 @@ class ExperienceManager {
         <div class="experience-card__dot"></div>
         <div class="experience-card__line"></div>
         <div class="experience-card__content">
-          <span class="experience-card__type experience-card__type--${exp.type}">${exp.type === 'work' ? '工作' : exp.type === 'education' ? '教育' : '校园'}</span>
+          <span class="experience-card__type experience-card__type--${exp.type}">${exp.type === 'work' ? '工作' : exp.type === 'education' ? '教育培训' : '校园'}</span>
           <span class="experience-card__period">${exp.period}</span>
           <h3 class="experience-card__title">${exp.title}</h3>
           <p class="experience-card__company">${exp.company}</p>
@@ -1076,7 +1076,7 @@ class App {
     try {
       const heroSub = document.getElementById('hero-subtitle');
       if (heroSub) {
-        const heroTw = new Typewriter(heroSub, '以 AIGC 为笔，以教育为墨，书写人与技术共生的诗篇。用每一次 Prompt，架起 AIGC 与教育之间的桥梁。', 65, true);
+        const heroTw = new Typewriter(heroSub, '以 AIGC 为笔，以教育培训为墨，书写人与技术共生的诗篇。用每一次 Prompt，架起 AIGC 与教育培训之间的桥梁。', 65, true);
         heroTw.start();
       }
     } catch (e) {
