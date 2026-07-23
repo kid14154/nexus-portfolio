@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS - 詹昊霖 | Zhan Haolin</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Emergency fallback: ensure text is visible even if all CSS fails -->
+  <style>
+    body { color: #fff !important; background: #000 !important; font-family: system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif !important; }
+    h1, h2, h3, h4, h5, h6, p, span, div, a, li { color: inherit !important; }
+  </style>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/reset.css?v=19">
+  <link rel="stylesheet" href="css/variables.css?v=19">
+  <link rel="stylesheet" href="css/main.css?v=19">
+  <link rel="stylesheet" href="css/effects.css?v=19">
+  <link rel="stylesheet" href="css/responsive.css?v=19">
+  <link rel="stylesheet" href="css/patch.css?v=19">
+  <link rel="stylesheet" href="css/cyber-enhance.css?v=19">
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- 开场序列 (Intro / Loading Screen)                             -->
+  <!-- ============================================================ -->
+  <div class="intro" id="intro">
+    <div class="intro__logo">NEXUS</div>
+    <div class="intro__tagline" data-text="詹昊霖 | AIGC 复合型人才\nAI 研究者 &amp; 开发者"></div>
+    <div class="intro__loader">
+      <div class="intro__loader-bar" id="intro-loader-bar"></div>
+    </div>
+    <div class="intro__loader-text" id="intro-loader-text">0%</div>
+    <div class="intro__skip">点击任意处跳过</div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 导航栏 (Navigation)                                           -->
+  <!-- ============================================================ -->
+  <nav class="nav" id="navbar">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo">
+        NEXUS<span class="nav__logo-dot"></span>
+      </a>
+      <div class="nav__links" id="nav-menu">
+        <a href="#about" class="nav__link">关于我</a>
+        <a href="#philosophy" class="nav__link">信条</a>
+        <a href="#skills" class="nav__link">技能</a>
+        <a href="#works" class="nav__link">作品</a>
+        <a href="#timeline" class="nav__link">经历</a>
+        <a href="#honors" class="nav__link">荣誉</a>
+        <a href="#contact" class="nav__link">联系</a>
+      </div>
+      <div class="nav__toggle" id="nav-toggle">
+        <span class="nav__toggle-bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- Canvas 粒子背景                                               -->
+  <!-- ============================================================ -->
+  <canvas id="particle-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+
+  <!-- ============================================================ -->
+  <!-- 扫描线覆盖层                                                   -->
+  <!-- ============================================================ -->
+  <div class="scanline"></div>
+
+  <!-- ============================================================ -->
+  <!-- Hero 区域                                                     -->
+  <!-- ============================================================ -->
+  <section id="hero" class="hero section">
+    <div class="hero__content section__container">
+      <div class="hero__greeting reveal">/ AIGC 复合型人才 · AI+教育 为锚，跨界为翼</div>
+
+      <h1 class="hero__title reveal">
+        <span class="hero__title-line">你好，我是</span>
+        <span class="hero__title-line hero__title-highlight">詹昊霖</span>
+      </h1>
+
+      <div class="hero__subtitle reveal" id="hero-subtitle">
+        <!-- Typewriter will replace this -->
+      </div>
+
+      <div class="hero__actions reveal">
+        <a href="#works" class="hero__btn hero__btn--primary">查看作品</a>
+        <a href="#contact" class="hero__btn hero__btn--secondary">联系我</a>
+      </div>
+
+      <div class="hero__tags reveal">
+        <span class="hero__tag">AIGC 课程架构师</span>
+        <span class="hero__tag">AI+教育 践行者</span>
+        <span class="hero__tag">Prompt 工程艺术家</span>
+        <span class="hero__tag">大模型应用工程师</span>
+        <span class="hero__tag">跨界复合创作者</span>
+        <span class="hero__tag">终身求知者</span>
+      </div>
+
+      <p class="hero__manifesto reveal">
+        我相信 AIGC 的终极奥义，是<strong class="glow-text">让人重新成为人</strong>。当 AI 生成的内容在屏幕上亮起，我便听见了未来的回响——那不是冰冷的算法，而是一场<strong class="gradient-text">人机共创的漫长对话</strong>。我以 AI+教育为锚点，让 AIGC 的火光向更多领域蔓延——在这条路上行走，只为见证技术温柔地抵达每一个普通人的掌心。
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- About 区域                                                    -->
+  <!-- ============================================================ -->
+  <section id="about" class="about section">
+    <div class="section__container">
+      <div class="about__grid">
+
+        <!-- 左侧：头像 + 装饰环 -->
+        <div class="about__image-wrapper reveal-left">
+          <div class="about__ring">
+            <div class="about__ring-dot"></div>
+          </div>
+          <div class="about__ring about__ring--outer">
+            <div class="about__ring-dot"></div>
+          </div>
+          <img src="assets/avatar-ai.jpg" alt="Avatar" class="about__avatar" loading="lazy">
+        </div>
+
+        <!-- 右侧：简介 -->
+        <div class="about__content reveal-right">
+          <span class="section__label">关于我</span>
+          <h2 class="section__title">你好，我是<span class="gradient-text"> 詹昊霖</span></h2>
+
+          <div class="about__bio-group">
+            <p class="about__bio">
+              一名以 <span class="glow-text">AIGC 为核心引擎</span>的复合型人才，深耕 AI+教育 这一重点领域，同时让 AIGC 的火光向创新创业、公益传播、内容创作等多个方向蔓延。我相信 AI 生成内容的真正价值，不在于替代人类，而在于<strong>让冷硬算法长出教育的温度</strong>。
+            </p>
+            <p class="about__bio">
+              从广州华商学院的计算机课堂，到深圳市那位科技有限公司的教学一线；从博智感知交互研究中心的 AI 模型调优，到深圳市游志文娱科技有限公司的 AIGC 课程体系搭建——<strong class="gradient-text">我始终以 AI+教育为主航道，同时拥抱 AI+公益、AI+内容、AI+企业提效等无限可能</strong>。我是 AIGC 的实践者，更是知识的传递者，是那个试图让 AI 红利流向每一个普通人的人。
+            </p>
+            <p class="about__bio">
+              目前栖息于 <strong>广东省深圳市</strong>，2025 届计算机科学与技术本科毕业生。我痴迷于 AIGC 的无限潜力，醉心于 Prompt Engineering 的精细艺术，更热衷于将复杂的 AI 知识转化为青少年、银发族、企业团队都能听懂的语言。<span class="glow-text">我的愿景：让 AIGC 不再是少数人的权杖，而是每个人掌中的微光——以教育为舟，以跨界为桨。</span>
+            </p>
+          </div>
+
+          <div class="about__traits">
+            <div class="about__trait">
+              <div class="about__trait-icon">🔥</div>
+              <div class="about__trait-title">AIGC 赤子心</div>
+              <div class="about__trait-desc">对 AIGC 与教育科技怀抱纯粹炽热，每个跨界项目皆倾注全力</div>
+            </div>
+            <div class="about__trait">
+              <div class="about__trait-icon">🧩</div>
+              <div class="about__trait-title">跨界共生力</div>
+              <div class="about__trait-desc">以 AIGC 为核，横跨教育、研究、公益、创业多个赛道游刃有余</div>
+            </div>
+            <div class="about__trait">
+              <div class="about__trait-icon">🚀</div>
+              <div class="about__trait-title">极致迭代</div>
+              <div class="about__trait-desc">3 天生成 10 套 AI 课件，高效执行是复合型人才的不变底色</div>
+            </div>
+            <div class="about__trait">
+              <div class="about__trait-icon">💡</div>
+              <div class="about__trait-title">降维洞察</div>
+              <div class="about__trait-desc">善于将复杂 AIGC 技术降维为普通人可感知的语言与产品</div>
+            </div>
+          </div>
+
+          <div class="about__stats">
+            <div class="about__stat">
+              <div class="about__stat-number">5+</div>
+              <div class="about__stat-label">YEARS EXP</div>
+            </div>
+            <div class="about__stat">
+              <div class="about__stat-number">50+</div>
+              <div class="about__stat-label">PROJECTS</div>
+            </div>
+            <div class="about__stat">
+              <div class="about__stat-number">100%</div>
+              <div class="about__stat-label">PASSION</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Philosophy 区域                                               -->
+  <!-- ============================================================ -->
+  <section id="philosophy" class="philosophy section">
+    <div class="section__container">
+      <div class="philosophy__header">
+        <span class="section__label">我的信条</span>
+        <h2 class="section__title">我的<span class="gradient-text">信条</span></h2>
+        <p class="section__subtitle">驱动我在 AIGC 跨界之路上跋涉的内在光源——以教育为锚,以万业为翼</p>
+      </div>
+
+      <div class="philosophy__grid">
+        <div class="philosophy__card reveal">
+          <div class="philosophy__card-number">01</div>
+          <h3 class="philosophy__card-title">AIGC 为教育而生</h3>
+          <p class="philosophy__card-desc">
+            再强大的 AIGC 能力，若止步于炫技而无法触达学习者，终不过是沉睡的硅基化石。我始终将<strong>"教育本位"</strong>奉为 AIGC 实践的第一性原理。在德城街道暑托班，我执意用即梦+Kimi 向孩子们拆解 AI 的骨骼——真正的 AIGC 普惠，始于让每一个普通人都能用 AI 生成属于自己的作品。
+          </p>
+        </div>
+
+        <div class="philosophy__card reveal">
+          <div class="philosophy__card-number">02</div>
+          <h3 class="philosophy__card-title">AI+教育即造未来</h3>
+          <p class="philosophy__card-desc">
+            我深信 AI+教育是个体命运最温柔的重写者，是社会齿轮最强劲的润滑剂。在深圳市那位科技有限公司与游志文娱科技的教学一线，我亲历了 AIGC 工具如何重塑学习体验的肌理。<strong>我的使命，是让优质 AIGC 教育如星光般触达每一个角落</strong>——从青少年启蒙到银发族跨越数字鸿沟，从象牙塔尖到市井烟火。
+          </p>
+        </div>
+
+        <div class="philosophy__card reveal">
+          <div class="philosophy__card-number">03</div>
+          <h3 class="philosophy__card-title">Prompt 即跨界之桥</h3>
+          <p class="philosophy__card-desc">
+            于我而言，Prompt Engineering 非止于技术，更是一种<strong>连接 AI 与万行业的跨界之桥</strong>。每一次精心雕琢的提示词，皆是一场人机共创的深度对谈。我笃信 AIGC 的未来，不止于教育——它将向内容创作、企业提效、公益传播等无数领域蔓延，而 Prompt 正是那把打开无限可能的钥匙。
+          </p>
+        </div>
+
+        <div class="philosophy__card reveal">
+          <div class="philosophy__card-number">04</div>
+          <h3 class="philosophy__card-title">以行践言 · 跨界共生</h3>
+          <p class="philosophy__card-desc">
+            从校园创新创业大赛的擂台，到公益暑托班的讲台；从模型调优的深夜，到 AIGC 课程体系的黎明——<strong>我习惯让结果替我发声</strong>。3 天淬炼 10 套 AI 课件、问答准确率跃升 5 个百分点、公众号单篇破 5000 阅读，这些数字背后，是"复合型人才"四字在我血脉中的回响——以教育为锚，以跨界为翼。
+          </p>
+        </div>
+      </div>
+
+      <div class="philosophy__quote reveal">
+        <blockquote>
+          "真正的技术领袖，不是站在金字塔尖俯瞰众生的人，而是俯身弯腰，将攀登的阶梯递予更多人的摆渡者。"
+        </blockquote>
+        <cite>— 詹昊霖</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Skills 区域                                                   -->
+  <!-- ============================================================ -->
+  <section id="skills" class="skills section">
+    <div class="section__container">
+      <div class="skills__header">
+        <span class="section__label">技能矩阵</span>
+        <h2 class="section__title">技能矩阵</h2>
+        <p class="section__subtitle">这不是一份冰冷的技能清单，而是我作为<strong class="gradient-text">AIGC 复合型人才</strong>在实践中打磨出的能力图谱——横跨教育、研究、创作、提效多个赛道。</p>
+      </div>
+
+      <!-- 技能筛选按钮（由 JS / patch.css 驱动） -->
+      <div class="skills-filter"></div>
+      <!-- 技能卡片网格（由 JS / patch.css 驱动） -->
+      <div class="skills-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Works 区域                                                    -->
+  <!-- ============================================================ -->
+  <section id="works" class="works section">
+    <div class="section__container">
+      <div class="works__header">
+        <span class="section__label">代表作品</span>
+        <h2 class="section__title">代表作品</h2>
+        <p class="section__subtitle">每一个项目都是我作为 AIGC 复合型人才的一段跨界印记。从<span class="gradient-text">AI+教育</span>到<span class="gradient-text">AI+公益</span>，从<span class="gradient-text">AI+研究</span>到<span class="gradient-text">AI+创业</span>——它们共同勾勒出我以 AIGC 为核、跨界蔓延的完整画像。</p>
+      </div>
+
+      <!-- 作品集横向滚动容器（由 JS / patch.css 驱动） -->
+      <div class="portfolio-grid drag-container"></div>
+      <div class="portfolio-scroll-hint">
+        <span class="portfolio-scroll-hint__icon">⟵</span>
+        <span class="portfolio-scroll-hint__text">滚轮 / 拖拽 查看更多作品</span>
+        <span class="portfolio-scroll-hint__icon">⟶</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Timeline 区域                                                 -->
+  <!-- ============================================================ -->
+  <section id="timeline" class="timeline section">
+    <div class="section__container">
+      <div class="timeline__header">
+        <span class="section__label">经历</span>
+        <h2 class="section__title">经历</h2>
+        <p class="section__subtitle">AIGC 跨界之路，塑造了我的复合型职业轨迹</p>
+      </div>
+
+      <!-- 时间线容器（由 JS / patch.css 驱动） -->
+      <div class="experience-timeline"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Honors 荣誉证书区域                                            -->
+  <!-- ============================================================ -->
+  <section id="honors" class="honors section">
+    <div class="section__container">
+      <div class="honors__header">
+        <span class="section__label">荣誉与认证</span>
+        <h2 class="section__title">荣誉与<span class="gradient-text">认证</span></h2>
+        <p class="section__subtitle">每一份证书都是 AIGC 复合型人才成长路上的见证，每一项荣誉都是<strong class="gradient-text">跨界实力的勋章</strong>。</p>
+      </div>
+
+      <div class="honors__grid">
+        <div class="honor-card reveal">
+          <div class="honor-card__icon">🏆</div>
+          <h3 class="honor-card__title">深圳市优秀共青团员</h3>
+          <p class="honor-card__desc">共青团深圳市委员会授予，表彰在共青团工作中表现突出的优秀青年。</p>
+        </div>
+
+        <div class="honor-card reveal">
+          <div class="honor-card__icon">🎓</div>
+          <h3 class="honor-card__title">港中文优秀实习生</h3>
+          <p class="honor-card__desc">博智感知交互研究中心与香港中文大学联合评定，实习期间表现优异，获优秀实习生荣誉。</p>
+        </div>
+
+        <div class="honor-card reveal">
+          <div class="honor-card__icon">📜</div>
+          <h3 class="honor-card__title">教师资格证</h3>
+          <p class="honor-card__desc">国家教师资格认证，具备教师职业资格，教育理论与教学实践双达标。</p>
+        </div>
+
+        <div class="honor-card reveal">
+          <div class="honor-card__icon">🌏</div>
+          <h3 class="honor-card__title">大学英语六级 CET-6</h3>
+          <p class="honor-card__desc">具备优秀的英语听说写能力，能够流畅阅读英文技术文档与学术论文。</p>
+        </div>
+
+        <div class="honor-card reveal">
+          <div class="honor-card__icon">🚗</div>
+          <h3 class="honor-card__title">机动车驾驶证</h3>
+          <p class="honor-card__desc">持有 C1 驾驶证，具备独立驾驶能力，适应出差及外勤工作需求。</p>
+        </div>
+
+        <div class="honor-card reveal">
+          <div class="honor-card__icon">⭐</div>
+          <h3 class="honor-card__title">学院优秀干部</h3>
+          <p class="honor-card__desc">学院党群志愿服务队宣传部部长任期内表现突出，获评学院优秀干部荣誉称号。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Contact 区域                                                  -->
+  <!-- ============================================================ -->
+  <section id="contact" class="contact section">
+    <div class="section__container">
+      <div class="contact__inner">
+
+        <span class="section__label">取得联系</span>
+        <h2 class="contact__title">取得联系</h2>
+        <p class="contact__subtitle">无论你是想探讨 AIGC 教育的未来、寻找 AI+跨界合作机会，还是单纯想聊聊大模型的最新玩法——<strong class="gradient-text">我都很乐意与你对话</strong>。我相信每一次真诚的交流，都可能孕育出 AIGC 改变世界的火花。</p>
+
+        <!-- 联系信息 -->
+        <div class="contact__info" style="margin-bottom: 2rem;">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">
+            <a href="mailto:1220715294@qq.com" class="gradient-text copy-email" data-email="1220715294@qq.com" style="cursor:pointer;text-decoration:none;">1220715294@qq.com</a>
+          </div>
+          <div style="font-size: 1.25rem; color: var(--text-secondary);">
+            <span data-copy="19874023227" style="cursor:pointer;transition:var(--transition);">电话: 19874023227</span>
+          </div>
+        </div>
+
+        <!-- 联系表单 -->
+        <form class="contact__form glass-card" style="padding: 2rem; text-align: left;">
+          <div class="contact__form-row">
+            <div class="contact__form-group">
+              <label class="contact__form-label">姓名</label>
+              <input type="text" class="contact__form-input" placeholder="你的名字">
+            </div>
+            <div class="contact__form-group">
+              <label class="contact__form-label">邮箱</label>
+              <input type="email" class="contact__form-input" placeholder="你的邮箱">
+            </div>
+          </div>
+          <div class="contact__form-group">
+            <label class="contact__form-label">留言</label>
+            <textarea class="contact__form-textarea" placeholder="说说你的想法或项目..."></textarea>
+          </div>
+          <button type="submit" class="contact__form-submit">发送消息 →</button>
+        </form>
+
+        <!-- 社交链接 -->
+        <div class="contact__socials">
+          <a href="#" class="contact__social-link" target="_blank" rel="noopener" title="GitHub">⌘</a>
+          <a href="#" class="contact__social-link" target="_blank" rel="noopener" title="LinkedIn">◈</a>
+          <a href="#" class="contact__social-link" target="_blank" rel="noopener" title="Twitter">✕</a>
+          <a href="#" class="contact__social-link" target="_blank" rel="noopener" title="Blog">✦</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Footer 底部                                                   -->
+  <!-- ============================================================ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">NEXUS <span>◈</span></div>
+      <div class="footer__links">
+        <a href="#about" class="footer__link">关于我</a>
+        <a href="#philosophy" class="footer__link">信条</a>
+        <a href="#skills" class="footer__link">技能</a>
+        <a href="#works" class="footer__link">作品</a>
+        <a href="#timeline" class="footer__link">经历</a>
+        <a href="#honors" class="footer__link">荣誉</a>
+        <a href="#contact" class="footer__link">联系</a>
+      </div>
+      <div class="footer__copyright">
+        &copy; 2026 NEXUS. 用 <a href="#">热爱</a> 与代码构建.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- JavaScript 文件                                               -->
+  <!-- ============================================================ -->
+  <!-- JS Files                                                       -->
+  <!-- ============================================================ -->
+  <script src="js/particleSystem.js?v=19"></script>
+  <script src="js/typewriter.js?v=19"></script>
+  <script src="js/tiltCards.js?v=19"></script>
+  <script src="js/scrollReveal.js?v=19"></script>
+  <script src="js/customCursor.js?v=19"></script>
+  <script src="js/main.js?v=19"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
