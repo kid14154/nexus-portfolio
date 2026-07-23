@@ -1,0 +1,443 @@
+/* ============================================================
+   NEXUS - Cyberpunk Visual Enhancement
+   赛博朋克 / 光粒子 / 未来科技 视觉增强
+   ============================================================ */
+
+/* ---- 1. 全局背景增强 ---- */
+body {
+  background-color: #000 !important;
+  background-image:
+    /* 大光晕层 */
+    radial-gradient(ellipse 80% 50% at 10% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(184, 41, 221, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0, 240, 255, 0.02) 0%, transparent 50%),
+    /* 网格背景 */
+    linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px) !important;
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    50px 50px,
+    50px 50px !important;
+  background-attachment: fixed, fixed, fixed, fixed, fixed !important;
+}
+
+/* ---- 2. Section 背景装饰 ---- */
+
+/* Hero 透视网格地板 */
+.hero {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 20% 20%, rgba(184, 41, 221, 0.1) 0%, transparent 50%) !important;
+}
+
+.hero::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: -50% !important;
+  right: -50% !important;
+  height: 50vh !important;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px) !important;
+  background-size: 60px 60px !important;
+  transform: perspective(600px) rotateX(70deg) !important;
+  transform-origin: center top !important;
+  opacity: 0.6 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  mask-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent) !important;
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent) !important;
+}
+
+/* About 区背景 */
+.about {
+  background:
+    radial-gradient(ellipse 50% 50% at 80% 50%, rgba(184, 41, 221, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(0, 240, 255, 0.05) 0%, transparent 50%) !important;
+}
+
+/* Skills 区背景 */
+.skills {
+  background:
+    radial-gradient(ellipse 50% 50% at 50% 0%, rgba(0, 240, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 100% 100%, rgba(184, 41, 221, 0.05) 0%, transparent 50%) !important;
+}
+
+/* Works 区背景 */
+.works {
+  background:
+    radial-gradient(ellipse 60% 40% at 0% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(184, 41, 221, 0.06) 0%, transparent 50%) !important;
+}
+
+/* Timeline 区背景 */
+.timeline {
+  background:
+    radial-gradient(ellipse 40% 60% at 50% 50%, rgba(0, 240, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 30% at 20% 10%, rgba(184, 41, 221, 0.06) 0%, transparent 40%) !important;
+}
+
+/* Contact 区背景 */
+.contact {
+  background:
+    radial-gradient(ellipse 50% 50% at 50% 100%, rgba(0, 240, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 10% 0%, rgba(184, 41, 221, 0.05) 0%, transparent 50%) !important;
+}
+
+/* Footer 背景 */
+.footer {
+  background: linear-gradient(180deg, transparent, rgba(0, 240, 255, 0.02)) !important;
+}
+
+/* ---- 3. 浮动装饰球 (每个 section 独有) ---- */
+
+/* 全局浮动光球 */
+.hero::before,
+.about::before,
+.skills::before,
+.works::before,
+.timeline::before,
+.contact::before {
+  content: '' !important;
+  position: absolute !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  filter: blur(80px) !important;
+  opacity: 0.4 !important;
+}
+
+.hero::before {
+  width: 400px !important;
+  height: 400px !important;
+  top: 10% !important;
+  right: 5% !important;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.3), transparent 70%) !important;
+  animation: float-orb 8s ease-in-out infinite !important;
+}
+
+.about::before {
+  width: 300px !important;
+  height: 300px !important;
+  top: 20% !important;
+  left: -5% !important;
+  background: radial-gradient(circle, rgba(184, 41, 221, 0.25), transparent 70%) !important;
+  animation: float-orb 10s ease-in-out infinite reverse !important;
+}
+
+.skills::before {
+  width: 350px !important;
+  height: 350px !important;
+  bottom: 10% !important;
+  right: -5% !important;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.2), transparent 70%) !important;
+  animation: float-orb 12s ease-in-out infinite 1s !important;
+}
+
+.works::before {
+  width: 280px !important;
+  height: 280px !important;
+  top: 15% !important;
+  left: 50% !important;
+  background: radial-gradient(circle, rgba(201, 162, 39, 0.15), transparent 70%) !important;
+  animation: float-orb 9s ease-in-out infinite 2s !important;
+}
+
+.timeline::before {
+  width: 320px !important;
+  height: 320px !important;
+  top: 5% !important;
+  right: 10% !important;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.18), transparent 70%) !important;
+  animation: float-orb 11s ease-in-out infinite 0.5s !important;
+}
+
+.contact::before {
+  width: 400px !important;
+  height: 400px !important;
+  top: 30% !important;
+  left: -10% !important;
+  background: radial-gradient(circle, rgba(184, 41, 221, 0.2), transparent 70%) !important;
+  animation: float-orb 10s ease-in-out infinite 1.5s !important;
+}
+
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.1); }
+  50% { transform: translate(-20px, 30px) scale(0.95); }
+  75% { transform: translate(20px, 20px) scale(1.05); }
+}
+
+/* ---- 4. 霓虹发光文字增强 ---- */
+.hero__title-highlight {
+  text-shadow:
+    0 0 10px rgba(0, 240, 255, 0.9),
+    0 0 20px rgba(0, 240, 255, 0.7),
+    0 0 40px rgba(0, 240, 255, 0.5),
+    0 0 80px rgba(0, 240, 255, 0.3),
+    0 0 120px rgba(184, 41, 221, 0.4),
+    0 0 200px rgba(184, 41, 221, 0.15) !important;
+  animation: neon-breathe 3s ease-in-out infinite !important;
+}
+
+@keyframes neon-breathe {
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(0, 240, 255, 0.9),
+      0 0 20px rgba(0, 240, 255, 0.7),
+      0 0 40px rgba(0, 240, 255, 0.5),
+      0 0 80px rgba(0, 240, 255, 0.3);
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow:
+      0 0 15px rgba(0, 240, 255, 1),
+      0 0 30px rgba(0, 240, 255, 0.9),
+      0 0 60px rgba(0, 240, 255, 0.6),
+      0 0 100px rgba(0, 240, 255, 0.4),
+      0 0 160px rgba(184, 41, 221, 0.6),
+      0 0 250px rgba(184, 41, 221, 0.25);
+    filter: brightness(1.15);
+  }
+}
+
+/* ---- 5. 扫描线增强 ---- */
+.scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.05) 0px,
+    rgba(0, 0, 0, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  ) !important;
+}
+
+.scanline::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), rgba(184, 41, 221, 0.2), transparent) !important;
+  animation: scan-beam 6s linear infinite !important;
+  z-index: 1 !important;
+}
+
+@keyframes scan-beam {
+  0% { top: -3px; }
+  100% { top: 100vh; }
+}
+
+/* ---- 6. Section 之间发光分割线 ---- */
+.section::after {
+  content: '' !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 800px !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), rgba(184, 41, 221, 0.3), transparent) !important;
+  margin: 0 auto !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 2 !important;
+}
+
+/* ---- 7. 粒子 Canvas 增强 ---- */
+#particle-canvas {
+  mix-blend-mode: screen !important;
+  opacity: 0.9 !important;
+}
+
+/* ---- 8. 导航栏增强 ---- */
+.nav--scrolled {
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(0, 240, 255, 0.1) !important;
+}
+
+.nav__logo {
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important;
+}
+
+/* ---- 9. 卡片增强 ---- */
+.skill-card::after,
+.portfolio-card::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)) !important;
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.skill-card:hover::after,
+.portfolio-card:hover::after {
+  transform: scaleX(1) !important;
+}
+
+/* ---- 10. 按钮流光边框 ---- */
+.hero__btn--primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__btn--primary::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple), var(--accent-cyan), var(--accent-purple));
+  background-size: 400% 400%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: border-flow 3s ease infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.hero__btn--primary:hover::before {
+  opacity: 1;
+}
+
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---- 11. 时间线增强 ---- */
+.experience-card__dot {
+  animation: pulse-glow-dot 2s ease-in-out infinite !important;
+  box-shadow:
+    0 0 10px rgba(0, 240, 255, 0.9),
+    0 0 20px rgba(0, 240, 255, 0.5),
+    0 0 40px rgba(0, 240, 255, 0.3) !important;
+}
+
+@keyframes pulse-glow-dot {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.9), 0 0 20px rgba(0, 240, 255, 0.5);
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 1), 0 0 30px rgba(0, 240, 255, 0.7), 0 0 60px rgba(0, 240, 255, 0.4);
+    transform: translateX(-50%) scale(1.3);
+  }
+}
+
+.experience-timeline::before {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), 0 0 30px rgba(184, 41, 221, 0.15) !important;
+}
+
+/* ---- 12. 联系表单增强 ---- */
+.contact__form-input:focus,
+.contact__form-textarea:focus {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.08) !important;
+}
+
+.contact__form-submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__form-submit::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(transparent, rgba(0, 240, 255, 0.4), transparent, rgba(184, 41, 221, 0.3), transparent);
+  animation: form-btn-rotate 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.contact__form-submit:hover::after {
+  opacity: 1;
+}
+
+@keyframes form-btn-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ---- 13. 噪点纹理 ---- */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+/* ---- 14. 头像增强 ---- */
+.about__avatar {
+  box-shadow:
+    0 0 30px rgba(0, 240, 255, 0.4),
+    0 0 60px rgba(0, 240, 255, 0.15),
+    inset 0 0 30px rgba(0, 240, 255, 0.1) !important;
+}
+
+/* ---- 15. 统计数字增强 ---- */
+.about__stat-number {
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.7), 0 0 30px rgba(0, 240, 255, 0.4) !important;
+}
+
+/* ---- 16. 滚动条美化 ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00f0ff, #b829dd);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+
+/* ---- 17. Footer 增强 ---- */
+.footer {
+  border-top: 1px solid rgba(0, 240, 255, 0.15) !important;
+}
+
+.footer__brand {
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.4) !important;
+}
+
+/* ---- 18. 装饰性角落线条 ---- */
+.section__container::before,
+.section__container::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 60px !important;
+  height: 60px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  opacity: 0.3 !important;
+}
+
+.section__container::before {
+  top: -20px !important;
+  left: -20px !important;
+  border-top: 1px solid rgba(0, 240, 255, 0.4) !important;
+  border-left: 1px solid rgba(0, 240, 255, 0.4) !important;
+}
+
+.section__container::after {
+  bottom: -20px !important;
+  right: -20px !important;
+  border-bottom: 1px solid rgba(184, 41, 221, 0.4) !important;
+  border-right: 1px solid rgba(184, 41, 221, 0.4) !important;
+}
